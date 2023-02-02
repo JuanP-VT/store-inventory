@@ -3,40 +3,55 @@ import Stack from "react-bootstrap/Stack";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import addCategorieRequest from "./addCategorieRequest";
-type Props = {};
+import { Container } from "react-bootstrap";
+import Alert from "react-bootstrap/Alert";
 
-function AddCategorie({}: Props) {
+function AddCategorie() {
   const [Message, setMessage] = useState("");
-
+  const [validated, setValidated] = useState(false);
   return (
     <>
-      <Stack
+      <Container
         style={{
           padding: "10px",
           paddingLeft: "400px",
           paddingRight: "400px",
         }}
       >
-        <Form>
+        <Form
+          noValidate
+          validated={validated}
+          onSubmit={(e) => addCategorieRequest(e, setMessage, setValidated)}
+        >
           <Form.Group controlId="categorieName">
             <Form.Label>Categorie Name</Form.Label>
-            <Form.Control type="text" />
+            <Form.Control type="text" required />
+            <Form.Control.Feedback>Looks good</Form.Control.Feedback>
           </Form.Group>
           <Form.Group controlId="iconUrl">
             <Form.Label>Icon Url</Form.Label>
-            <Form.Control type="text" />
+            <Form.Control type="text" required />
+            <Form.Control.Feedback>Looks good</Form.Control.Feedback>
           </Form.Group>
-          <Button
-            onClick={(e) => addCategorieRequest(e)}
-            variant="primary"
-            type="submit"
-            className="mt-3"
-          >
+          <Button variant="primary" type="submit" className="mt-3">
             Submit
           </Button>
-          <div>{Message}</div>
+          {Message !== "" && Message !== "Success" ? (
+            <Alert variant="danger" className="mt-3">
+              {Message}
+            </Alert>
+          ) : (
+            ""
+          )}
+          {Message !== "" && Message === "Success" ? (
+            <Alert variant="success" className="mt-3">
+              {Message}
+            </Alert>
+          ) : (
+            ""
+          )}
         </Form>
-      </Stack>
+      </Container>
     </>
   );
 }
