@@ -18,6 +18,11 @@ function NavBar() {
           View Categorie
         </Nav.Link>
       </Nav.Item>
+      <Nav.Item>
+        <Nav.Link as={Link} to="/viewproduct">
+          View Product
+        </Nav.Link>
+      </Nav.Item>
     </Nav>
   );
 }
