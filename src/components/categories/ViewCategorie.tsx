@@ -1,6 +1,7 @@
 import React from "react";
 import { useEffect, useState } from "react";
 import { Categorie } from "../../interfaces";
+import CategorieCard from "./categorieCard/CategorieCard";
 type Props = {};
 // This component will call the API to fetch and display all categories and display
 function ViewCategorie({}: Props) {
@@ -14,7 +15,11 @@ function ViewCategorie({}: Props) {
       setCategorieList(data);
     }
   }, []);
-  return <div>ViewCategorie</div>;
+  return (
+    <div>
+      <CategorieCard />
+    </div>
+  );
 }
 
 export default ViewCategorie;

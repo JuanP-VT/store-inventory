@@ -1,9 +1,11 @@
-import { Stack } from "react-bootstrap";
+import React from "react";
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
-type Props = {};
+type Props = {
+  setEditMode: React.Dispatch<React.SetStateAction<boolean>>;
+};
 
-function CategorieCard({}: Props) {
+function CategorieCardView({ setEditMode }: Props) {
   return (
     <>
       <Card
@@ -42,7 +44,7 @@ function CategorieCard({}: Props) {
             style={{ width: "6rem" }}
             alt="Card image"
           />
-          <Button variant="primary" size="sm">
+          <Button variant="primary" size="sm" onClick={() => setEditMode(true)}>
             Edit
           </Button>
         </Card.Body>
@@ -51,4 +53,4 @@ function CategorieCard({}: Props) {
   );
 }
 
-export default CategorieCard;
+export default CategorieCardView;
