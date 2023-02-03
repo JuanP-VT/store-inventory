@@ -1,7 +1,13 @@
+import ProductCard from "./productCard/ProductCard";
+
 type Props = {};
 
 function ViewProduct({}: Props) {
-  return <div>ViewProduct</div>;
+  return (
+    <div>
+      <ProductCard />
+    </div>
+  );
 }
 
 export default ViewProduct;
