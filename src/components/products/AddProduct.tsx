@@ -1,15 +1,25 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useState } from "react";
-import Stack from "react-bootstrap/Stack";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
-import addCategorieRequest from "../categories/addCategorieRequest";
 import { Container } from "react-bootstrap";
 import Alert from "react-bootstrap/Alert";
-
+import { Categorie } from "../../interfaces";
+import addProductRequest from "./addProductRequest";
+// This component create a request from the form to create a new product to the database
 function AddProduct() {
   const [Message, setMessage] = useState("");
   const [validated, setValidated] = useState(false);
+  const [categorieList, setCategorieList] = useState<Categorie[]>([]);
+  // Get registered categories in the database
+  useEffect(() => {
+    callApi();
+    async function callApi() {
+      const res = await fetch("https://wild-waterfall-1243.fly.dev/categories");
+      const data = await res.json();
+      setCategorieList(data);
+    }
+  }, []);
   return (
     <>
       <Container
@@ -22,7 +32,7 @@ function AddProduct() {
         <Form
           noValidate
           validated={validated}
-          onSubmit={(e) => addCategorieRequest(e, setMessage, setValidated)}
+          onSubmit={(e) => addProductRequest(e, setMessage, setValidated)}
         >
           <Form.Group controlId="productName">
             <Form.Label>Product Name</Form.Label>
@@ -31,7 +41,12 @@ function AddProduct() {
           </Form.Group>
           <Form.Group controlId="productCategorie">
             <Form.Label>Categorie</Form.Label>
-            <Form.Control type="text" required />
+            <Form.Select>
+              <option>No Categorie</option>
+              {categorieList.map((item, index) => (
+                <option key={`catList-${index}`}>{item.name}</option>
+              ))}
+            </Form.Select>
             <Form.Control.Feedback>Looks good</Form.Control.Feedback>
           </Form.Group>
           <Form.Group controlId="productStock">
