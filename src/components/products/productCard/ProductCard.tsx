@@ -2,9 +2,7 @@ import React from "react";
 import { useState } from "react";
 import ProductCardEdit from "./ProductCardEdit";
 import ProductCardView from "./ProductCardView";
-type Props = {
-  setEditMode: React.Dispatch<React.SetStateAction<boolean>>;
-};
+type Props = {};
 
 function ProductCard({}: Props) {
   const [editMode, setEditMode] = useState(false);
