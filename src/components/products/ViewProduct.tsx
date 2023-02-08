@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import {
   Categorie,
-  modProduct,
   Product,
+  ApiProduct,
   ProductPaginatedArray,
 } from "../../interfaces";
 import createPagination from "./createPagination";
@@ -14,7 +14,7 @@ import { Stack } from "react-bootstrap";
 import Pagination from "./Pagination";
 
 function ViewProduct() {
-  const [productList, setProductList] = useState<modProduct[]>([]);
+  const [productList, setProductList] = useState<Product[]>([]);
   const [currentPageIndex, setCurrentPageIndex] = useState(0);
   const [paginatedProductList, setPaginatedProductList] =
     useState<ProductPaginatedArray>([]);
@@ -26,7 +26,7 @@ function ViewProduct() {
       const prodRes = await fetch(
         "https://wild-waterfall-1243.fly.dev/products"
       );
-      const productData = (await prodRes.json()) as Product[];
+      const productData = (await prodRes.json()) as ApiProduct[];
       const catRes = await fetch(
         "https://wild-waterfall-1243.fly.dev/categories"
       );
