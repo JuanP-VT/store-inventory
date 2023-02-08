@@ -3,17 +3,29 @@ import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 type Props = {
   setEditMode: React.Dispatch<React.SetStateAction<boolean>>;
+  name: string;
+  categorie?: string;
+  categorieIconUrl: string;
+  stock: number;
+  price: number;
 };
 
-function ProductCardView({ setEditMode }: Props) {
+function ProductCardView({
+  setEditMode,
+  name,
+  categorie,
+  categorieIconUrl,
+  price,
+  stock,
+}: Props) {
   return (
     <>
       <Card style={{ width: "17rem", height: "12rem", position: "relative" }}>
         <Card.Body>
-          <Card.Title>Watermelon</Card.Title>
-          <Card.Subtitle className="mb-2">Fruits</Card.Subtitle>
-          <Card.Text>Current Stock : 500</Card.Text>
-          <Card.Text>Price : 10$ </Card.Text>
+          <Card.Title>{name}</Card.Title>
+          <Card.Subtitle className="mb-2">{categorie}</Card.Subtitle>
+          <Card.Text>Current Stock : {stock}</Card.Text>
+          <Card.Text>Price : {price}$ </Card.Text>
         </Card.Body>
         <Button
           onClick={() => setEditMode(true)}
@@ -35,7 +47,7 @@ function ProductCardView({ setEditMode }: Props) {
           X
         </Button>
         <Card.Img
-          src="https://th.bing.com/th/id/OIP.TwG2_TWf8QS2ebyhO7jQnQHaFQ?pid=ImgDet&rs=1"
+          src={categorieIconUrl}
           style={{
             width: "70px",
             height: "70px",
