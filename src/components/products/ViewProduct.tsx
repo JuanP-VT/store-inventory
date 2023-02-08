@@ -16,8 +16,9 @@ import Pagination from "./Pagination";
 function ViewProduct() {
   const [productList, setProductList] = useState<Product[]>([]);
   const [currentPageIndex, setCurrentPageIndex] = useState(0);
-  const [paginatedProductList, setPaginatedProductList] =
-    useState<ProductPaginatedArray>([]);
+  const [paginatedProductList, setPaginatedProductList] = useState<Product[][]>(
+    []
+  );
 
   //Fetch categorie and product list from API, then merge them
   useEffect(() => {
@@ -49,7 +50,7 @@ function ViewProduct() {
 
   // Create pagination from product list
   useEffect(() => {
-    const paginatedArray = createPagination(productList, 20);
+    const paginatedArray = createPagination(productList, 16);
     setPaginatedProductList(paginatedArray);
   }, [productList]);
   return (
@@ -73,6 +74,7 @@ function ViewProduct() {
           <Pagination
             currentPageIndex={currentPageIndex}
             setCurrentPageIndex={setCurrentPageIndex}
+            paginatedProductList={paginatedProductList}
           />
         </Container>
       </Stack>
