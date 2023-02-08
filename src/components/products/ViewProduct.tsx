@@ -11,6 +11,7 @@ import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import { Stack } from "react-bootstrap";
+import Pagination from "./Pagination";
 
 function ViewProduct() {
   const [productList, setProductList] = useState<modProduct[]>([]);
@@ -69,7 +70,10 @@ function ViewProduct() {
             : ""}
         </Container>
         <Container fluid style={{ border: "1px solid red", height: "5vh" }}>
-          Pagination
+          <Pagination
+            currentPageIndex={currentPageIndex}
+            setCurrentPageIndex={setCurrentPageIndex}
+          />
         </Container>
       </Stack>
     </>
