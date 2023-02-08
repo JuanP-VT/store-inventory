@@ -14,7 +14,7 @@ import { Stack } from "react-bootstrap";
 
 function ViewProduct() {
   const [productList, setProductList] = useState<modProduct[]>([]);
-  const [currentPage, setCurrentPage] = useState(1);
+  const [currentPageIndex, setCurrentPageIndex] = useState(0);
   const [paginatedProductList, setPaginatedProductList] =
     useState<ProductPaginatedArray>([]);
 
@@ -56,7 +56,7 @@ function ViewProduct() {
       <Stack>
         <Container fluid style={{ border: "1px solid green", height: "90vh" }}>
           {paginatedProductList[0] !== undefined
-            ? paginatedProductList[currentPage - 1].map((product, index) => (
+            ? paginatedProductList[currentPageIndex].map((product, index) => (
                 <ProductCard
                   key={`itm${index}`}
                   name={product.name}
