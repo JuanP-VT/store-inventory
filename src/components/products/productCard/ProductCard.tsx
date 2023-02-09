@@ -10,6 +10,7 @@ type Props = {
   stock: number;
   price: number;
   categorieList: Categorie[];
+  _id: string;
 };
 
 function ProductCard({
@@ -19,6 +20,7 @@ function ProductCard({
   price,
   stock,
   categorieList,
+  _id,
 }: Props) {
   const [editMode, setEditMode] = useState(false);
   return (
@@ -41,6 +43,7 @@ function ProductCard({
           stock={stock}
           price={price}
           categorieList={categorieList}
+          _id={_id}
         />
       )}
     </>

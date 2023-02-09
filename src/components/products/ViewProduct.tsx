@@ -73,6 +73,7 @@ function ViewProduct() {
                   stock={product.stock}
                   price={product.price}
                   categorieList={categorieList}
+                  _id={product._id}
                 />
               ))
             : ""}

@@ -12,6 +12,7 @@ type Props = {
   stock: number;
   price: number;
   categorieList: Categorie[];
+  _id: string;
 };
 
 function ProductCardEdit({
@@ -22,10 +23,12 @@ function ProductCardEdit({
   stock,
   price,
   categorieList,
+  _id,
 }: Props) {
   return (
     <>
       <Card
+        data-_id={_id}
         style={{
           width: "15rem",
           height: "17rem",
