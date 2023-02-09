@@ -14,15 +14,13 @@ function ViewProduct() {
     []
   );
   const [categorieList, setCategorieList] = useState<Categorie[]>([]);
-  //Fetch categorie and product list from API and store in state
-  useEffect(() => {
-    getAllProductsRequest(setProductList, setCategorieList);
-  }, []);
+
   // Reload component when needed
   const [updateComponent, setUpdateComponent] = useState(0);
   useEffect(() => {
     getAllProductsRequest(setProductList, setCategorieList);
   }, [updateComponent]);
+
   // Create pagination from product list
   useEffect(() => {
     const paginatedArray = createPagination(productList, 18);
@@ -34,7 +32,6 @@ function ViewProduct() {
         <Container
           fluid
           style={{
-            border: "1px solid green",
             height: "90vh",
             display: "grid",
             gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))",
@@ -57,7 +54,7 @@ function ViewProduct() {
               ))
             : ""}
         </Container>
-        <Container fluid style={{ border: "1px solid red", height: "5vh" }}>
+        <Container fluid style={{ height: "5vh" }}>
           <Pagination
             currentPageIndex={currentPageIndex}
             setCurrentPageIndex={setCurrentPageIndex}
