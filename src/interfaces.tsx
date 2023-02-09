@@ -7,6 +7,7 @@ export interface ApiProduct {
   categorie: string;
   stock: number;
   price: number;
+  _id: string;
 }
 export interface Product {
   name: string;
@@ -14,5 +15,5 @@ export interface Product {
   categorieIconUrl: string | undefined;
   stock: number;
   price: number;
+  _id: string;
 }
-export type ProductPaginatedArray = Product[][];

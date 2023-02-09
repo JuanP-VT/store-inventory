@@ -1,10 +1,5 @@
 import { useEffect, useState } from "react";
-import {
-  Categorie,
-  Product,
-  ApiProduct,
-  ProductPaginatedArray,
-} from "../../interfaces";
+import { Categorie, Product, ApiProduct } from "../../interfaces";
 import createPagination from "./createPagination";
 import ProductCard from "./productCard/ProductCard";
 import Container from "react-bootstrap/Container";
@@ -42,6 +37,7 @@ function ViewProduct() {
           categorieIconUrl: categorieIconUrl,
           stock: product.stock,
           price: product.price,
+          _id: product._id,
         };
       });
       setProductList(modProductList);
