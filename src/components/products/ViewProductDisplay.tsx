@@ -76,7 +76,8 @@ function ViewProductDisplay({
           }}
         >
           {/* For each item in a page render a ProductCard */}
-          {paginatedProductList[0] !== undefined
+          {paginatedProductList[0] !== undefined &&
+          paginatedProductList[0] !== null
             ? paginatedProductList[currentPageIndex].map((product, index) => (
                 <ProductCard
                   key={`itm${index}`}
