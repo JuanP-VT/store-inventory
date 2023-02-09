@@ -1,5 +1,6 @@
 import React from "react";
 import { useState } from "react";
+import { Categorie } from "../../../interfaces";
 import ProductCardEdit from "./ProductCardEdit";
 import ProductCardView from "./ProductCardView";
 type Props = {
@@ -8,6 +9,7 @@ type Props = {
   categorieIconUrl: string;
   stock: number;
   price: number;
+  categorieList: Categorie[];
 };
 
 function ProductCard({
@@ -16,6 +18,7 @@ function ProductCard({
   categorieIconUrl,
   price,
   stock,
+  categorieList,
 }: Props) {
   const [editMode, setEditMode] = useState(false);
   return (
@@ -37,6 +40,7 @@ function ProductCard({
           categorieIconUrl={categorieIconUrl}
           stock={stock}
           price={price}
+          categorieList={categorieList}
         />
       )}
     </>

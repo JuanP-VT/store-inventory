@@ -3,6 +3,7 @@ import { Stack } from "react-bootstrap";
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 import Form from "react-bootstrap/Form";
+import { Categorie } from "../../../interfaces";
 type Props = {
   setEditMode: React.Dispatch<React.SetStateAction<boolean>>;
   name: string;
@@ -10,6 +11,7 @@ type Props = {
   categorieIconUrl: string;
   stock: number;
   price: number;
+  categorieList: Categorie[];
 };
 
 function ProductCardEdit({
@@ -19,6 +21,7 @@ function ProductCardEdit({
   categorieIconUrl,
   stock,
   price,
+  categorieList,
 }: Props) {
   return (
     <>
@@ -47,12 +50,13 @@ function ProductCardEdit({
             Categorie
           </Form.Label>
           <Form.Select
+            defaultValue={categorie}
             className=" m-0 w-75"
             style={{ height: "30px", fontSize: "11px" }}
           >
             <option style={{ fontSize: "10px" }}>No Categorie</option>
-            {[].map((item, index) => (
-              <option key={`catList-${index}`}>{item}</option>
+            {categorieList.map((item, index) => (
+              <option key={`ct${index}`}>{item.name}</option>
             ))}
           </Form.Select>
         </Form.Group>
@@ -107,7 +111,7 @@ function ProductCardEdit({
           X
         </Button>
         <Card.Img
-          src="https://th.bing.com/th/id/OIP.TwG2_TWf8QS2ebyhO7jQnQHaFQ?pid=ImgDet&rs=1"
+          src={categorieIconUrl}
           style={{
             width: "50px",
             height: "50px",

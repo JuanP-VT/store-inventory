@@ -19,7 +19,7 @@ function ViewProduct() {
   const [paginatedProductList, setPaginatedProductList] = useState<Product[][]>(
     []
   );
-
+  const [categorieList, setCategorieList] = useState<Categorie[]>([]);
   //Fetch categorie and product list from API, then merge them
   useEffect(() => {
     callApi();
@@ -45,6 +45,7 @@ function ViewProduct() {
         };
       });
       setProductList(modProductList);
+      setCategorieList(categorieData);
     }
   }, []);
 
@@ -75,6 +76,7 @@ function ViewProduct() {
                   categorieIconUrl={product.categorieIconUrl!}
                   stock={product.stock}
                   price={product.price}
+                  categorieList={categorieList}
                 />
               ))
             : ""}
