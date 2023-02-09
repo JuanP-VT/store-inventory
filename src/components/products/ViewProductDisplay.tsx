@@ -3,21 +3,30 @@ import ProductCard from "./productCard/ProductCard";
 import Container from "react-bootstrap/Container";
 import { Stack } from "react-bootstrap";
 import Pagination from "./Pagination";
+import { useEffect, useState } from "react";
+import createPagination from "./createPagination";
+
 type Props = {
-  paginatedProductList: Product[][];
+  productList: Product[];
   categorieList: Categorie[];
-  currentPageIndex: number;
-  setCurrentPageIndex: React.Dispatch<React.SetStateAction<number>>;
   setUpdateComponent: React.Dispatch<React.SetStateAction<number>>;
 };
 
 function ViewProductDisplay({
-  paginatedProductList,
+  productList,
   categorieList,
-  currentPageIndex,
-  setCurrentPageIndex,
   setUpdateComponent,
 }: Props) {
+  const [currentPageIndex, setCurrentPageIndex] = useState(0);
+  const [paginatedProductList, setPaginatedProductList] = useState<Product[][]>(
+    []
+  );
+
+  // Create pagination from product list
+  useEffect(() => {
+    const paginatedArray = createPagination(productList, 18);
+    setPaginatedProductList(paginatedArray);
+  }, [productList]);
   return (
     <>
       <Stack>
