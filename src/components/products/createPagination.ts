@@ -1,13 +1,14 @@
-import { modProduct, Product } from "../../interfaces";
+import { Product } from "../../interfaces";
 
 // This function splits an array of items into groups
 export default function createPagination(
-  arrayOfItems: modProduct[],
+  arrayOfItems: Product[],
   itemsPerPage: number
 ) {
   const paginatedArray = [];
-  while (arrayOfItems.length > 0) {
-    const newEntry = arrayOfItems.splice(0, itemsPerPage);
+  const cloneArray = [...arrayOfItems];
+  while (cloneArray.length > 0) {
+    const newEntry = cloneArray.splice(0, itemsPerPage);
     paginatedArray.push(newEntry);
   }
   return paginatedArray;
