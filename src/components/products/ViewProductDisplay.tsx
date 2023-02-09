@@ -21,12 +21,47 @@ function ViewProductDisplay({
   const [paginatedProductList, setPaginatedProductList] = useState<Product[][]>(
     []
   );
+  //resizing logic
+  const [itemsPerPage, setItemsPerPage] = useState(18);
+  useEffect(() => {
+    const resizeListener = () => {
+      const width = window.innerWidth;
+      if (width <= 2685 && width > 1920) {
+        setItemsPerPage(24);
+      }
+      if (width < 1920 && width > 1820) {
+        setItemsPerPage(18);
+      }
+      if (width < 1820 && width > 1520) {
+        setItemsPerPage(20);
+      }
+      if (width < 1520 && width > 1220) {
+        setItemsPerPage(16);
+      }
+      if (width < 1320 && width > 920) {
+        setItemsPerPage(12);
+      }
+      if (width < 920 && width > 620) {
+        setItemsPerPage(8);
+      }
+      if (width < 620) {
+        setItemsPerPage(4);
+      }
+    };
+    // set resize listener
+    window.addEventListener("resize", resizeListener);
 
+    // clean up function
+    return () => {
+      // remove resize listener
+      window.removeEventListener("resize", resizeListener);
+    };
+  }, []);
   // Create pagination from product list
   useEffect(() => {
-    const paginatedArray = createPagination(productList, 18);
+    const paginatedArray = createPagination(productList, itemsPerPage);
     setPaginatedProductList(paginatedArray);
-  }, [productList]);
+  }, [productList, itemsPerPage]);
   return (
     <>
       <Stack>
@@ -36,6 +71,7 @@ function ViewProductDisplay({
             height: "90vh",
             display: "grid",
             gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))",
+            justifyItems: "center",
             padding: "10px",
           }}
         >
