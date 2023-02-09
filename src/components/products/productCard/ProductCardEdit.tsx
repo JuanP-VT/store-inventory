@@ -4,6 +4,7 @@ import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 import Form from "react-bootstrap/Form";
 import { Categorie } from "../../../interfaces";
+import handleProductEdit from "./handleProductEdit";
 type Props = {
   setEditMode: React.Dispatch<React.SetStateAction<boolean>>;
   name: string;
@@ -89,7 +90,11 @@ function ProductCardEdit({
         </Form.Group>
 
         <Stack direction="horizontal">
-          <Button size="sm" style={{ width: "100px", margin: "5px" }}>
+          <Button
+            onClick={(e) => handleProductEdit(e)}
+            size="sm"
+            style={{ width: "100px", margin: "5px" }}
+          >
             Update
           </Button>
           <Button
