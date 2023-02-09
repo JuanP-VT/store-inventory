@@ -14,6 +14,7 @@ type Props = {
   price: number;
   categorieList: Categorie[];
   _id: string;
+  setUpdateComponent: React.Dispatch<React.SetStateAction<number>>;
 };
 
 function ProductCardEdit({
@@ -25,6 +26,7 @@ function ProductCardEdit({
   price,
   categorieList,
   _id,
+  setUpdateComponent,
 }: Props) {
   return (
     <>
@@ -91,7 +93,7 @@ function ProductCardEdit({
 
         <Stack direction="horizontal">
           <Button
-            onClick={(e) => handleProductEdit(e)}
+            onClick={(e) => handleProductEdit(e, setUpdateComponent)}
             size="sm"
             style={{ width: "100px", margin: "5px" }}
           >

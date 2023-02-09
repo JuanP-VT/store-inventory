@@ -1,5 +1,8 @@
 // Grabs the information from the form and send an edit request to the API
-export default async function handleProductEdit(e: React.MouseEvent) {
+export default async function handleProductEdit(
+  e: React.MouseEvent,
+  setUpdateComponent: React.Dispatch<React.SetStateAction<number>>
+) {
   e.preventDefault();
   const target = e.target as HTMLButtonElement;
   const parentCard = target.parentElement?.parentElement as HTMLDivElement;
@@ -35,4 +38,5 @@ export default async function handleProductEdit(e: React.MouseEvent) {
     },
     body: JSON.stringify(newEntry),
   });
+  setUpdateComponent((state) => state + 1);
 }

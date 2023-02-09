@@ -11,6 +11,7 @@ type Props = {
   price: number;
   categorieList: Categorie[];
   _id: string;
+  setUpdateComponent: React.Dispatch<React.SetStateAction<number>>;
 };
 
 function ProductCard({
@@ -21,6 +22,7 @@ function ProductCard({
   stock,
   categorieList,
   _id,
+  setUpdateComponent,
 }: Props) {
   const [editMode, setEditMode] = useState(false);
   return (
@@ -44,6 +46,7 @@ function ProductCard({
           price={price}
           categorieList={categorieList}
           _id={_id}
+          setUpdateComponent={setUpdateComponent}
         />
       )}
     </>

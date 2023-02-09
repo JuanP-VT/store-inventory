@@ -3,8 +3,6 @@ import { Categorie, Product, ApiProduct } from "../../interfaces";
 import createPagination from "./createPagination";
 import ProductCard from "./productCard/ProductCard";
 import Container from "react-bootstrap/Container";
-import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col";
 import { Stack } from "react-bootstrap";
 import Pagination from "./Pagination";
 import getAllProductsRequest from "./getAllProductsRequest";
@@ -20,7 +18,11 @@ function ViewProduct() {
   useEffect(() => {
     getAllProductsRequest(setProductList, setCategorieList);
   }, []);
-
+  // Reload component when needed
+  const [updateComponent, setUpdateComponent] = useState(0);
+  useEffect(() => {
+    getAllProductsRequest(setProductList, setCategorieList);
+  }, [updateComponent]);
   // Create pagination from product list
   useEffect(() => {
     const paginatedArray = createPagination(productList, 18);
@@ -50,6 +52,7 @@ function ViewProduct() {
                   price={product.price}
                   categorieList={categorieList}
                   _id={product._id}
+                  setUpdateComponent={setUpdateComponent}
                 />
               ))
             : ""}
