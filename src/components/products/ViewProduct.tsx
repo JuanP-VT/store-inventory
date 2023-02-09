@@ -7,6 +7,7 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import { Stack } from "react-bootstrap";
 import Pagination from "./Pagination";
+import getAllProductsRequest from "./getAllProductsRequest";
 
 function ViewProduct() {
   const [productList, setProductList] = useState<Product[]>([]);
@@ -15,34 +16,9 @@ function ViewProduct() {
     []
   );
   const [categorieList, setCategorieList] = useState<Categorie[]>([]);
-  //Fetch categorie and product list from API, then merge them
+  //Fetch categorie and product list from API and store in state
   useEffect(() => {
-    callApi();
-    async function callApi() {
-      const prodRes = await fetch(
-        "https://wild-waterfall-1243.fly.dev/products"
-      );
-      const productData = (await prodRes.json()) as ApiProduct[];
-      const catRes = await fetch(
-        "https://wild-waterfall-1243.fly.dev/categories"
-      );
-      const categorieData = (await catRes.json()) as Categorie[];
-      const modProductList = productData.map((product) => {
-        const categorieIconUrl = categorieData.find(
-          (cat) => product.categorie == cat.name
-        )?.iconUrl;
-        return {
-          name: product.name,
-          categorie: product.categorie,
-          categorieIconUrl: categorieIconUrl,
-          stock: product.stock,
-          price: product.price,
-          _id: product._id,
-        };
-      });
-      setProductList(modProductList);
-      setCategorieList(categorieData);
-    }
+    getAllProductsRequest(setProductList, setCategorieList);
   }, []);
 
   // Create pagination from product list
