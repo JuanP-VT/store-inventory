@@ -1,4 +1,5 @@
 import React from "react";
+import { Stack } from "react-bootstrap";
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 type Props = {
@@ -20,37 +21,44 @@ function ProductCardView({
 }: Props) {
   return (
     <>
-      <Card style={{ width: "17rem", height: "12rem", position: "relative" }}>
+      <Card
+        border="secondary"
+        style={{ width: "16rem", height: "12rem" }}
+        className="position-relative shadow-sm border"
+      >
         <Card.Body>
-          <Card.Title>{name}</Card.Title>
+          <Card.Title style={{ textTransform: "capitalize" }}>
+            {name}
+          </Card.Title>
           <Card.Subtitle className="mb-2">{categorie}</Card.Subtitle>
-          <Card.Text>Current Stock : {stock}</Card.Text>
-          <Card.Text>Price : {price}$ </Card.Text>
+          <Card.Text className="mb-1">Current Stock : {stock}</Card.Text>
+          <Card.Text className="mb-0">Price : {price}$ </Card.Text>
         </Card.Body>
-        <Button
-          onClick={() => setEditMode(true)}
-          size="sm"
-          style={{ width: "150px", marginLeft: "50px", marginBottom: "5px" }}
-        >
-          Edit
-        </Button>
-        <Button
-          style={{
-            position: "absolute",
-            top: "3px",
-            right: "3px",
-            fontSize: "10px",
-          }}
-          variant="danger"
-          size="sm"
-        >
-          X
-        </Button>
+        <Stack direction="horizontal">
+          <Button
+            onClick={() => setEditMode(true)}
+            size="sm"
+            style={{
+              width: "60px",
+              marginLeft: "10px",
+              marginBottom: "5px",
+            }}
+          >
+            Edit
+          </Button>
+          <Button
+            style={{ width: "60px", marginLeft: "10px", marginBottom: "5px" }}
+            variant="danger"
+            size="sm"
+          >
+            Delete
+          </Button>
+        </Stack>
         <Card.Img
           src={categorieIconUrl}
           style={{
-            width: "70px",
-            height: "70px",
+            width: "55px",
+            height: "55px",
             position: "absolute",
             top: "25%",
             right: "10px",
