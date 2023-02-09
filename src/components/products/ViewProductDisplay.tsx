@@ -1,31 +1,23 @@
-import { useEffect, useState } from "react";
-import { Categorie, Product, ApiProduct } from "../../interfaces";
-import createPagination from "./createPagination";
+import { Categorie, Product } from "../../interfaces";
 import ProductCard from "./productCard/ProductCard";
 import Container from "react-bootstrap/Container";
 import { Stack } from "react-bootstrap";
 import Pagination from "./Pagination";
-import getAllProductsRequest from "./getAllProductsRequest";
+type Props = {
+  paginatedProductList: Product[][];
+  categorieList: Categorie[];
+  currentPageIndex: number;
+  setCurrentPageIndex: React.Dispatch<React.SetStateAction<number>>;
+  setUpdateComponent: React.Dispatch<React.SetStateAction<number>>;
+};
 
-function ViewProduct() {
-  const [productList, setProductList] = useState<Product[]>([]);
-  const [currentPageIndex, setCurrentPageIndex] = useState(0);
-  const [paginatedProductList, setPaginatedProductList] = useState<Product[][]>(
-    []
-  );
-  const [categorieList, setCategorieList] = useState<Categorie[]>([]);
-
-  // Reload component when needed
-  const [updateComponent, setUpdateComponent] = useState(0);
-  useEffect(() => {
-    getAllProductsRequest(setProductList, setCategorieList);
-  }, [updateComponent]);
-
-  // Create pagination from product list
-  useEffect(() => {
-    const paginatedArray = createPagination(productList, 18);
-    setPaginatedProductList(paginatedArray);
-  }, [productList]);
+function ViewProductDisplay({
+  paginatedProductList,
+  categorieList,
+  currentPageIndex,
+  setCurrentPageIndex,
+  setUpdateComponent,
+}: Props) {
   return (
     <>
       <Stack>
@@ -38,6 +30,7 @@ function ViewProduct() {
             padding: "10px",
           }}
         >
+          {/* For each item in a page render a ProductCard */}
           {paginatedProductList[0] !== undefined
             ? paginatedProductList[currentPageIndex].map((product, index) => (
                 <ProductCard
@@ -66,4 +59,4 @@ function ViewProduct() {
   );
 }
 
-export default ViewProduct;
+export default ViewProductDisplay;

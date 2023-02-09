@@ -6,7 +6,7 @@ import { Routes, Route } from "react-router-dom";
 import AddCategorie from "./components/categories/AddCategorie";
 import AddProduct from "./components/products/AddProduct";
 import ViewCategorie from "./components/categories/ViewCategorie";
-import ViewProduct from "./components/products/ViewProduct";
+import ViewProduct from "./components/products/ViewProductRoute";
 function App() {
   return (
     <>
