@@ -1,10 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import { Stack } from "react-bootstrap";
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 import Form from "react-bootstrap/Form";
 import { Categorie } from "../../../interfaces";
 import handleProductEdit from "./handleProductEdit";
+import { FaCheck } from "react-icons/fa";
 type Props = {
   setEditMode: React.Dispatch<React.SetStateAction<boolean>>;
   name: string;
@@ -28,6 +29,7 @@ function ProductCardEdit({
   _id,
   setUpdateComponent,
 }: Props) {
+  const [feedback, setFeedback] = useState(false);
   return (
     <>
       <Card
@@ -92,21 +94,40 @@ function ProductCardEdit({
         </Form.Group>
 
         <Stack direction="horizontal">
-          <Button
-            onClick={(e) => handleProductEdit(e, setUpdateComponent)}
-            size="sm"
-            style={{ width: "100px", margin: "5px" }}
-          >
-            Update
-          </Button>
-          <Button
-            variant="secondary"
-            onClick={() => setEditMode(false)}
-            size="sm"
-            style={{ width: "100px", margin: "5px" }}
-          >
-            Back
-          </Button>
+          {feedback === true ? (
+            <>
+              <FaCheck
+                color="green"
+                style={{ marginLeft: "10px", marginRight: "10px" }}
+              />
+              <p className="text-justify mt-2">Update Successful</p>
+            </>
+          ) : (
+            <>
+              <Button
+                onClick={(e) =>
+                  handleProductEdit(
+                    e,
+                    setUpdateComponent,
+                    setFeedback,
+                    setEditMode
+                  )
+                }
+                size="sm"
+                style={{ width: "100px", margin: "5px" }}
+              >
+                Update
+              </Button>
+              <Button
+                variant="secondary"
+                onClick={() => setEditMode(false)}
+                size="sm"
+                style={{ width: "100px", margin: "5px" }}
+              >
+                Back
+              </Button>
+            </>
+          )}
         </Stack>
         <Button
           style={{
