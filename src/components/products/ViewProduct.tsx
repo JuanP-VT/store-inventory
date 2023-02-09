@@ -50,13 +50,22 @@ function ViewProduct() {
 
   // Create pagination from product list
   useEffect(() => {
-    const paginatedArray = createPagination(productList, 16);
+    const paginatedArray = createPagination(productList, 18);
     setPaginatedProductList(paginatedArray);
   }, [productList]);
   return (
     <>
       <Stack>
-        <Container fluid style={{ border: "1px solid green", height: "90vh" }}>
+        <Container
+          fluid
+          style={{
+            border: "1px solid green",
+            height: "90vh",
+            display: "grid",
+            gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))",
+            padding: "10px",
+          }}
+        >
           {paginatedProductList[0] !== undefined
             ? paginatedProductList[currentPageIndex].map((product, index) => (
                 <ProductCard
