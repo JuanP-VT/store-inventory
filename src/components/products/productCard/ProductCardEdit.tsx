@@ -5,9 +5,21 @@ import Card from "react-bootstrap/Card";
 import Form from "react-bootstrap/Form";
 type Props = {
   setEditMode: React.Dispatch<React.SetStateAction<boolean>>;
+  name: string;
+  categorie?: string;
+  categorieIconUrl: string;
+  stock: number;
+  price: number;
 };
 
-function ProductCardEdit({ setEditMode }: Props) {
+function ProductCardEdit({
+  setEditMode,
+  name,
+  categorie,
+  categorieIconUrl,
+  stock,
+  price,
+}: Props) {
   return (
     <>
       <Card
@@ -27,6 +39,7 @@ function ProductCardEdit({ setEditMode }: Props) {
             type="text"
             required
             style={{ height: "25px", fontSize: "13px" }}
+            defaultValue={name}
           />
         </Form.Group>
         <Form.Group controlId="productCategorie">
@@ -52,6 +65,7 @@ function ProductCardEdit({ setEditMode }: Props) {
             type="number"
             required
             style={{ height: "25px", fontSize: "13px" }}
+            defaultValue={stock}
           />
         </Form.Group>
         <Form.Group controlId="productPrice">
@@ -63,6 +77,7 @@ function ProductCardEdit({ setEditMode }: Props) {
             type="number"
             required
             style={{ height: "25px", fontSize: "13px" }}
+            defaultValue={price}
           />
         </Form.Group>
 

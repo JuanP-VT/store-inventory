@@ -30,7 +30,14 @@ function ProductCard({
           price={price}
         />
       ) : (
-        <ProductCardEdit setEditMode={setEditMode} />
+        <ProductCardEdit
+          setEditMode={setEditMode}
+          name={name}
+          categorie={categorie}
+          categorieIconUrl={categorieIconUrl}
+          stock={stock}
+          price={price}
+        />
       )}
     </>
   );
