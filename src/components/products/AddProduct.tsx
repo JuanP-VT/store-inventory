@@ -1,5 +1,4 @@
-import React, { useEffect } from "react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import { Container } from "react-bootstrap";
@@ -22,13 +21,10 @@ function AddProduct() {
   }, []);
   return (
     <>
-      <Container
-        style={{
-          padding: "10px",
-          paddingLeft: "400px",
-          paddingRight: "400px",
-        }}
-      >
+      <Container>
+        <p style={{ fontSize: "2rem", fontWeight: "700", paddingTop: "10px" }}>
+          Add New Product
+        </p>
         <Form
           noValidate
           validated={validated}
