@@ -18,7 +18,6 @@ function ViewProduct() {
 
   return (
     <>
-      <FilterProduct productList={productList} categorieList={categorieList} />
       <ViewProductDisplay
         productList={productList}
         categorieList={categorieList}

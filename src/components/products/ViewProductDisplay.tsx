@@ -5,6 +5,7 @@ import { Stack } from "react-bootstrap";
 import PaginationButtons from "./PaginationButtons";
 import { useEffect, useState } from "react";
 import createPagination from "./createPagination";
+import FilterProduct from "./productFilter/FilterProduct";
 
 type Props = {
   productList: Product[];
@@ -12,6 +13,7 @@ type Props = {
   setUpdateComponent: React.Dispatch<React.SetStateAction<number>>;
 };
 
+// This component displays filtered products
 function ViewProductDisplay({
   productList,
   categorieList,
@@ -30,6 +32,10 @@ function ViewProductDisplay({
   return (
     <>
       <Stack>
+        <FilterProduct
+          categorieList={categorieList}
+          productList={productList}
+        />
         <Container
           fluid
           style={{
