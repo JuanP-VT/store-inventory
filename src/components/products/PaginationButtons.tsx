@@ -7,12 +7,11 @@ type Props = {
   paginatedProductList: Product[][];
 };
 
-function Pagination({
+function PaginationButtons({
   setCurrentPageIndex,
   currentPageIndex,
   paginatedProductList,
 }: Props) {
-  const [activePage, setActivePage] = useState(1);
   return (
     <>
       <BPagination>
@@ -22,7 +21,7 @@ function Pagination({
             active={index === currentPageIndex}
             onClick={() => setCurrentPageIndex(index)}
           >
-            {index + 1}{" "}
+            {index + 1}
           </BPagination.Item>
         ))}
       </BPagination>
@@ -30,4 +29,4 @@ function Pagination({
   );
 }
 
-export default Pagination;
+export default PaginationButtons;

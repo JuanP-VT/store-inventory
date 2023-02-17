@@ -2,7 +2,7 @@ import { Categorie, Product } from "../../interfaces";
 import ProductCard from "./productCard/ProductCard";
 import Container from "react-bootstrap/Container";
 import { Stack } from "react-bootstrap";
-import Pagination from "./Pagination";
+import PaginationButtons from "./PaginationButtons";
 import { useEffect, useState } from "react";
 import createPagination from "./createPagination";
 
@@ -59,7 +59,7 @@ function ViewProductDisplay({
             : ""}
         </Container>
         <Container fluid style={{ height: "5vh" }}>
-          <Pagination
+          <PaginationButtons
             currentPageIndex={currentPageIndex}
             setCurrentPageIndex={setCurrentPageIndex}
             paginatedProductList={paginatedProductList}
