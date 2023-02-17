@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Categorie, Product } from "../../interfaces";
-import FilterProduct from "./FilterProduct";
+import FilterProduct from "./productFilter/FilterProduct";
 import getAllProductsRequest from "./getAllProductsRequest";
 import ViewProductDisplay from "./ViewProductDisplay";
 
@@ -18,7 +18,7 @@ function ViewProduct() {
 
   return (
     <>
-      <FilterProduct />
+      <FilterProduct productList={productList} categorieList={categorieList} />
       <ViewProductDisplay
         productList={productList}
         categorieList={categorieList}
