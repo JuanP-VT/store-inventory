@@ -5,7 +5,7 @@ type Props = {
   setEditMode: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
-function CategorieCardView({ setEditMode }: Props) {
+function CategoryCardView({ setEditMode }: Props) {
   return (
     <>
       <Card
@@ -25,7 +25,7 @@ function CategorieCardView({ setEditMode }: Props) {
           }}
         >
           <Card.Title className="m-0" style={{ textAlign: "center" }}>
-            Vegetablessss
+            Vegetables
           </Card.Title>
           <Button
             style={{
@@ -53,4 +53,4 @@ function CategorieCardView({ setEditMode }: Props) {
   );
 }
 
-export default CategorieCardView;
+export default CategoryCardView;

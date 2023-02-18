@@ -5,7 +5,7 @@ import NavBar from "./components/NavBar/NavBar";
 import { Routes, Route } from "react-router-dom";
 import AddCategory from "./components/categories/AddCategory";
 import AddProduct from "./components/products/AddProduct";
-import ViewCategorie from "./components/categories/ViewCategorie";
+import ViewCategory from "./components/categories/ViewCategory";
 import ViewProduct from "./components/products/ViewProductRoute";
 function App() {
   return (
@@ -13,7 +13,7 @@ function App() {
       <NavBar />
       <Routes>
         <Route path="/addcategorie" element={<AddCategory />} />
-        <Route path="/viewcategorie" element={<ViewCategorie />} />
+        <Route path="/viewcategorie" element={<ViewCategory />} />
         <Route path="/addproduct" element={<AddProduct />} />
         <Route path="/viewproduct" element={<ViewProduct />} />
       </Routes>

@@ -7,7 +7,7 @@ type Props = {
   setEditMode: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
-function CategorieCardEdit({ setEditMode }: Props) {
+function CategoryCardEdit({ setEditMode }: Props) {
   return (
     <Card
       style={{
@@ -25,14 +25,14 @@ function CategorieCardEdit({ setEditMode }: Props) {
         alt="Card image"
       />
       <Form.Group
-        controlId="categorieName"
+        controlId="categoryName"
         style={{
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
         }}
       >
-        <Form.Label className="m-0">Categorie Name</Form.Label>
+        <Form.Label className="m-0">Category Name</Form.Label>
         <Form.Control
           type="text"
           required
@@ -74,4 +74,4 @@ function CategorieCardEdit({ setEditMode }: Props) {
   );
 }
 
-export default CategorieCardEdit;
+export default CategoryCardEdit;
