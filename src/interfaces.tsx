@@ -1,4 +1,4 @@
-export interface Categorie {
+export interface Category {
   name: string;
   iconUrl: string | undefined;
 }
