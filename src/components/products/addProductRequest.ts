@@ -9,10 +9,10 @@ export default async function addProductRequest(
   // Create new entry with form values
   const nameInput = document.querySelector("#productName") as HTMLInputElement;
   const productName = nameInput.value;
-  const categorieInput = document.querySelector(
-    "#productCategorie"
+  const categoryInput = document.querySelector(
+    "#productCategory"
   ) as HTMLOptionElement;
-  const productCategorie = categorieInput.value;
+  const productCategory = categoryInput.value;
   const stockInput = document.querySelector(
     "#productStock"
   ) as HTMLInputElement;
@@ -23,12 +23,12 @@ export default async function addProductRequest(
   const price = priceInput.value;
   const newEntry = {
     name: productName.toLowerCase(),
-    categorie: productCategorie.toLowerCase(),
+    category: productCategory.toLowerCase(),
     stock: parseInt(stock),
     price: parseInt(price),
   } as Product;
   setValidated(true);
-  // Prerequest validation
+  // Pre request validation
   if (productName === "") {
     setMessage("Enter Product Name");
     return;
@@ -50,7 +50,7 @@ export default async function addProductRequest(
     body: JSON.stringify(newEntry),
   });
   const { msg } = await res.json();
-  //Postrequest Validation
+  //Post request Validation
   if (msg === "Name is already in database") {
     nameInput.setCustomValidity("Invalid field");
   }

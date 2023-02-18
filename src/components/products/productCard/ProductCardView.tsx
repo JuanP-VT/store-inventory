@@ -5,8 +5,8 @@ import Card from "react-bootstrap/Card";
 type Props = {
   setEditMode: React.Dispatch<React.SetStateAction<boolean>>;
   name: string;
-  categorie?: string;
-  categorieIconUrl: string;
+  category?: string;
+  categoryIconUrl: string;
   stock: number;
   price: number;
 };
@@ -14,8 +14,8 @@ type Props = {
 function ProductCardView({
   setEditMode,
   name,
-  categorie,
-  categorieIconUrl,
+  category: category,
+  categoryIconUrl: categoryIconUrl,
   price,
   stock,
 }: Props) {
@@ -30,7 +30,7 @@ function ProductCardView({
           <Card.Title style={{ textTransform: "capitalize" }}>
             {name}
           </Card.Title>
-          <Card.Subtitle className="mb-2">{categorie}</Card.Subtitle>
+          <Card.Subtitle className="mb-2">{category}</Card.Subtitle>
           <Card.Text className="mb-1">Current Stock : {stock}</Card.Text>
           <Card.Text className="mb-0">Price : {price}$ </Card.Text>
         </Card.Body>
@@ -55,7 +55,7 @@ function ProductCardView({
           </Button>
         </Stack>
         <Card.Img
-          src={categorieIconUrl}
+          src={categoryIconUrl}
           style={{
             width: "55px",
             height: "55px",

@@ -3,17 +3,17 @@ import { Stack } from "react-bootstrap";
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 import Form from "react-bootstrap/Form";
-import { Categorie } from "../../../interfaces";
+import { Category } from "../../../interfaces";
 import handleProductEdit from "./handleProductEdit";
 import { FaCheck } from "react-icons/fa";
 type Props = {
   setEditMode: React.Dispatch<React.SetStateAction<boolean>>;
   name: string;
-  categorie?: string;
-  categorieIconUrl: string;
+  category?: string;
+  categoryIconUrl: string;
   stock: number;
   price: number;
-  categorieList: Categorie[];
+  categoryList: Category[];
   _id: string;
   setUpdateComponent: React.Dispatch<React.SetStateAction<number>>;
 };
@@ -21,11 +21,11 @@ type Props = {
 function ProductCardEdit({
   setEditMode,
   name,
-  categorie,
-  categorieIconUrl,
+  category: category,
+  categoryIconUrl: categoryIconUrl,
   stock,
   price,
-  categorieList,
+  categoryList: categoryList,
   _id,
   setUpdateComponent,
 }: Props) {
@@ -53,17 +53,17 @@ function ProductCardEdit({
             defaultValue={name}
           />
         </Form.Group>
-        <Form.Group controlId="productCategorie">
+        <Form.Group controlId="productCategory">
           <Form.Label style={{ fontSize: "13px" }} className="m-0">
-            Categorie
+            Category
           </Form.Label>
           <Form.Select
-            defaultValue={categorie}
+            defaultValue={category}
             className=" m-0 w-75"
             style={{ height: "30px", fontSize: "11px" }}
           >
-            <option style={{ fontSize: "10px" }}>No Categorie</option>
-            {categorieList.map((item, index) => (
+            <option style={{ fontSize: "10px" }}>No Category</option>
+            {categoryList.map((item, index) => (
               <option key={`ct${index}`}>{item.name}</option>
             ))}
           </Form.Select>
@@ -142,7 +142,7 @@ function ProductCardEdit({
           X
         </Button>
         <Card.Img
-          src={categorieIconUrl}
+          src={categoryIconUrl}
           style={{
             width: "50px",
             height: "50px",

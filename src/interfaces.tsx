@@ -4,15 +4,15 @@ export interface Category {
 }
 export interface ApiProduct {
   name: string;
-  categorie: string;
+  category: string;
   stock: number;
   price: number;
   _id: string;
 }
 export interface Product {
   name: string;
-  categorie: string;
-  categorieIconUrl: string | undefined;
+  category: string;
+  categoryIconUrl: string | undefined;
   stock: number;
   price: number;
   _id: string;

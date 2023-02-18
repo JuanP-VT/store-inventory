@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Categorie, Product } from "../../interfaces";
+import { Category, Product } from "../../interfaces";
 import FilterProduct from "./productFilter/FilterProduct";
 import getAllProductsRequest from "./getAllProductsRequest";
 import ViewProductDisplay from "./ViewProductDisplay";
@@ -8,19 +8,19 @@ import ViewProductDisplay from "./ViewProductDisplay";
 // This data is then passed as props to the Product Display component
 function ViewProduct() {
   const [productList, setProductList] = useState<Product[]>([]);
-  const [categorieList, setCategorieList] = useState<Categorie[]>([]);
+  const [categoryList, setCategoryList] = useState<Category[]>([]);
   const [updateComponent, setUpdateComponent] = useState(0);
-  // Fetch product and categorie list from API , dependencie is used
+  // Fetch product and category list from API , dependency is used
   // to reload component when needed
   useEffect(() => {
-    getAllProductsRequest(setProductList, setCategorieList);
+    getAllProductsRequest(setProductList, setCategoryList);
   }, [updateComponent]);
 
   return (
     <>
       <ViewProductDisplay
         productList={productList}
-        categorieList={categorieList}
+        categoryList={categoryList}
         setUpdateComponent={setUpdateComponent}
       />
     </>

@@ -2,18 +2,18 @@ import Dropdown from "react-bootstrap/Dropdown";
 import DropdownButton from "react-bootstrap/DropdownButton";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
-import { Categorie, Product } from "../../../interfaces";
+import { Category, Product } from "../../../interfaces";
 import { useRef } from "react";
 import { DropdownSelector } from "./DropDownSelector";
 type Props = {
   productList: Product[];
-  categorieList: Categorie[];
+  categoryList: Category[];
 };
 
-function FilterProduct({ productList, categorieList }: Props) {
-  const categorieInput = useRef(null);
-  const categorieListOptions = categorieList.map((categorie, index) => (
-    <option key={`f${index}`}>{categorie.name}</option>
+function FilterProduct({ productList, categoryList: categoryList }: Props) {
+  const categoryInput = useRef(null);
+  const categoryListOptions = categoryList.map((category, index) => (
+    <option key={`f${index}`}>{category.name}</option>
   ));
   return (
     <>
@@ -24,7 +24,7 @@ function FilterProduct({ productList, categorieList }: Props) {
         <Dropdown.Menu>
           <Form>
             <Form.Group>
-              <DropdownSelector categorieList={categorieList} />
+              <DropdownSelector categoryList={categoryList} />
             </Form.Group>
             <Form.Group>
               <Form.Label>Product Name</Form.Label>

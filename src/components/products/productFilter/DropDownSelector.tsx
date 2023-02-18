@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Dropdown from "react-bootstrap/Dropdown";
 import FormControl from "react-bootstrap/FormControl";
-import { Categorie } from "../../../interfaces";
+import { Category } from "../../../interfaces";
 
 //Bootstrap component
 type CustomToggleProps = {
@@ -50,7 +50,7 @@ const CustomMenu = React.forwardRef(
         <FormControl
           autoFocus
           className="mx-3 my-2 w-auto"
-          placeholder="Find categorie..."
+          placeholder="Find category..."
           onChange={(e) => setValue(e.target.value)}
           value={value}
         />
@@ -65,35 +65,35 @@ const CustomMenu = React.forwardRef(
   }
 );
 
-type Props = { categorieList: Categorie[] };
-export const DropdownSelector = ({ categorieList }: Props) => {
-  const [selectedCategorie, setSelectedCategorie] = useState("");
+type Props = { categoryList: Category[] };
+export const DropdownSelector = ({ categoryList: categoryList }: Props) => {
+  const [selectedCategory, setSelectedCategory] = useState("");
 
-  const theChosenCategorie = () => {
-    const chosenCategorie: Categorie | undefined = categorieList.find(
-      (f) => f.name === selectedCategorie
+  const theChosenCategory = () => {
+    const chosenCategory: Category | undefined = categoryList.find(
+      (f) => f.name === selectedCategory
     );
-    return chosenCategorie ? chosenCategorie.name : "Select Categorie";
+    return chosenCategory ? chosenCategory.name : "Select Category";
   };
 
   return (
     <Dropdown
-      onSelect={(e: string | null) => setSelectedCategorie(e ? String(e) : "")}
+      onSelect={(e: string | null) => setSelectedCategory(e ? String(e) : "")}
     >
       <Dropdown.Toggle as={CustomToggle} id="dropdown-custom-components">
-        {theChosenCategorie()}
+        {theChosenCategory()}
       </Dropdown.Toggle>
       <Dropdown.Menu as={CustomMenu}>
         <Dropdown.Item key="default" eventKey="default">
           All
         </Dropdown.Item>
-        {categorieList.map((categorie) => {
+        {categoryList.map((category) => {
           return (
             <Dropdown.Item
-              key={categorie.name}
-              eventKey={categorie.name.toString()}
+              key={category.name}
+              eventKey={category.name.toString()}
             >
-              {categorie.name}
+              {category.name}
             </Dropdown.Item>
           );
         })}

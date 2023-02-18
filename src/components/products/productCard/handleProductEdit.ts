@@ -11,8 +11,8 @@ export default async function handleProductEdit(
   const productName = parentCard.querySelector(
     "#productName"
   ) as HTMLInputElement;
-  const productCategorie = parentCard.querySelector(
-    "#productCategorie"
+  const productCategory = parentCard.querySelector(
+    "#productCategory"
   ) as HTMLInputElement;
   const productStock = parentCard.querySelector(
     "#productStock"
@@ -23,13 +23,13 @@ export default async function handleProductEdit(
 
   const id = parentCard.getAttribute("data-_id");
   const name = productName.value;
-  const categorie = productCategorie.value;
+  const category = productCategory.value;
   const Stock = productStock.value;
   const price = productPrice.value;
   const newEntry = {
     _id: id,
     name: name,
-    categorie: categorie,
+    category: category,
     stock: Stock,
     price: price,
   };
@@ -41,7 +41,7 @@ export default async function handleProductEdit(
     body: JSON.stringify(newEntry),
   });
   const { msg } = await res.json();
-  // If update is succesfull show feedback and disable edit mode
+  // If update is successful show feedback and disable edit mode
   if (msg === "Success") {
     setUpdateComponent((state) => state + 1);
     setFeedback(true);

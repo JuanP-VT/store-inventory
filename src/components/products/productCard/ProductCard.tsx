@@ -5,22 +5,22 @@ import ProductCardEdit from "./ProductCardEdit";
 import ProductCardView from "./ProductCardView";
 type Props = {
   name: string;
-  categorie?: string;
-  categorieIconUrl: string;
+  category?: string;
+  categoryIconUrl: string;
   stock: number;
   price: number;
-  categorieList: Categorie[];
+  categoryList: Categorie[];
   _id: string;
   setUpdateComponent: React.Dispatch<React.SetStateAction<number>>;
 };
 
 function ProductCard({
   name,
-  categorie,
-  categorieIconUrl,
+  category: categorie,
+  categoryIconUrl: categorieIconUrl,
   price,
   stock,
-  categorieList,
+  categoryList: categorieList,
   _id,
   setUpdateComponent,
 }: Props) {
@@ -31,8 +31,8 @@ function ProductCard({
         <ProductCardView
           setEditMode={setEditMode}
           name={name}
-          categorie={categorie}
-          categorieIconUrl={categorieIconUrl}
+          category={categorie}
+          categoryIconUrl={categorieIconUrl}
           stock={stock}
           price={price}
         />
@@ -40,11 +40,11 @@ function ProductCard({
         <ProductCardEdit
           setEditMode={setEditMode}
           name={name}
-          categorie={categorie}
-          categorieIconUrl={categorieIconUrl}
+          category={categorie}
+          categoryIconUrl={categorieIconUrl}
           stock={stock}
           price={price}
-          categorieList={categorieList}
+          categoryList={categorieList}
           _id={_id}
           setUpdateComponent={setUpdateComponent}
         />

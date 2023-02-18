@@ -3,20 +3,20 @@ import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import { Container } from "react-bootstrap";
 import Alert from "react-bootstrap/Alert";
-import { Categorie } from "../../interfaces";
+import { Category } from "../../interfaces";
 import addProductRequest from "./addProductRequest";
 // This component create a request from the form to create a new product to the database
 function AddProduct() {
   const [Message, setMessage] = useState("");
   const [validated, setValidated] = useState(false);
-  const [categorieList, setCategorieList] = useState<Categorie[]>([]);
+  const [categoryList, setCategoryList] = useState<Category[]>([]);
   // Get registered categories in the database
   useEffect(() => {
     callApi();
     async function callApi() {
       const res = await fetch("https://wild-waterfall-1243.fly.dev/categories");
       const data = await res.json();
-      setCategorieList(data);
+      setCategoryList(data);
     }
   }, []);
   return (
@@ -35,11 +35,11 @@ function AddProduct() {
             <Form.Control type="text" required />
             <Form.Control.Feedback>Looks good</Form.Control.Feedback>
           </Form.Group>
-          <Form.Group controlId="productCategorie">
-            <Form.Label>Categorie</Form.Label>
+          <Form.Group controlId="productCategory">
+            <Form.Label>Category</Form.Label>
             <Form.Select>
-              <option>No Categorie</option>
-              {categorieList.map((item, index) => (
+              <option>No Category</option>
+              {categoryList.map((item, index) => (
                 <option key={`catList-${index}`}>{item.name}</option>
               ))}
             </Form.Select>

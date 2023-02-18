@@ -1,4 +1,4 @@
-import { Categorie, Product } from "../../interfaces";
+import { Category, Product } from "../../interfaces";
 import ProductCard from "./productCard/ProductCard";
 import Container from "react-bootstrap/Container";
 import { Stack } from "react-bootstrap";
@@ -9,14 +9,14 @@ import FilterProduct from "./productFilter/FilterProduct";
 
 type Props = {
   productList: Product[];
-  categorieList: Categorie[];
+  categoryList: Category[];
   setUpdateComponent: React.Dispatch<React.SetStateAction<number>>;
 };
 
 // This component displays filtered products
 function ViewProductDisplay({
   productList,
-  categorieList,
+  categoryList: categoryList,
   setUpdateComponent,
 }: Props) {
   const [currentPageIndex, setCurrentPageIndex] = useState(0);
@@ -32,10 +32,7 @@ function ViewProductDisplay({
   return (
     <>
       <Stack>
-        <FilterProduct
-          categorieList={categorieList}
-          productList={productList}
-        />
+        <FilterProduct categoryList={categoryList} productList={productList} />
         <Container
           fluid
           style={{
@@ -53,11 +50,11 @@ function ViewProductDisplay({
                 <ProductCard
                   key={`itm${index}`}
                   name={product.name}
-                  categorie={product.categorie}
-                  categorieIconUrl={product.categorieIconUrl!}
+                  category={product.category}
+                  categoryIconUrl={product.categoryIconUrl!}
                   stock={product.stock}
                   price={product.price}
-                  categorieList={categorieList}
+                  categoryList={categoryList}
                   _id={product._id}
                   setUpdateComponent={setUpdateComponent}
                 />
