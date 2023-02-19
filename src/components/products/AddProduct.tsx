@@ -6,11 +6,14 @@ import Alert from "react-bootstrap/Alert";
 
 import handleOnSubmitProduct from "./handleOnSubmitProduct";
 import { Category } from "../../interfaces";
+import useGetCategoriesList from "../../hooks/useGetCategoriesList";
 interface NewProduct {
   name: string;
   category: string;
   stock: number;
   price: number;
+  minStock: number | null;
+  maxStock: number | null;
 }
 // This component create a request from the form to create a new product to the database
 function AddProduct() {
@@ -19,20 +22,13 @@ function AddProduct() {
     category: "",
     stock: 0,
     price: 0,
+    minStock: null,
+    maxStock: null,
   });
   console.log(newProduct);
   const [feedbackMessage, setFeedbackMessage] = useState("");
   const [formIsValidated, setFormIsValidated] = useState(false);
-  const [categoryList, setCategoryList] = useState<Category[]>([]);
-  // Get registered categories in the database
-  useEffect(() => {
-    callApi();
-    async function callApi() {
-      const res = await fetch("https://wild-waterfall-1243.fly.dev/categories");
-      const data = await res.json();
-      setCategoryList(data);
-    }
-  }, []);
+  const categoryList = useGetCategoriesList();
   return (
     <>
       <Container>
@@ -74,7 +70,6 @@ function AddProduct() {
                 <option key={`catList-${index}`}>{item.name}</option>
               ))}
             </Form.Select>
-            <Form.Control.Feedback>Looks good</Form.Control.Feedback>
           </Form.Group>
           <Form.Group controlId="productStock">
             <Form.Label>Stock</Form.Label>
