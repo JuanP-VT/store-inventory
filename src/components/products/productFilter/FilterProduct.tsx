@@ -17,7 +17,7 @@ function FilterProduct({ productList, categoryList: categoryList }: Props) {
   ));
   return (
     <>
-      <Dropdown className="d-inline mx-2" autoClose="outside">
+      <Dropdown className="p-2 d-inline mx-2" autoClose="outside">
         <Dropdown.Toggle id="dropdown-autoclose-outside">
           Filter Product
         </Dropdown.Toggle>

@@ -23,15 +23,17 @@ function ProductCardView({
     <>
       <Card
         border="secondary"
-        style={{ width: "16rem", height: "12rem" }}
+        style={{ width: "13rem", height: "12rem" }}
         className="position-relative shadow-sm border"
       >
-        <Card.Body>
+        <Card.Body className="pb-0 mb-0">
           <Card.Title style={{ textTransform: "capitalize" }}>
             {name}
           </Card.Title>
-          <Card.Subtitle className="mb-2">{category}</Card.Subtitle>
-          <Card.Text className="mb-1">Current Stock : {stock}</Card.Text>
+          <Card.Subtitle style={{ textTransform: "capitalize" }}>
+            {category}
+          </Card.Subtitle>
+          <Card.Text className="mb-0">Stock : {stock}</Card.Text>
           <Card.Text className="mb-0">Price : {price}$ </Card.Text>
         </Card.Body>
         <Stack direction="horizontal">
@@ -41,13 +43,13 @@ function ProductCardView({
             style={{
               width: "60px",
               marginLeft: "10px",
-              marginBottom: "5px",
+              marginBottom: "15px",
             }}
           >
             Edit
           </Button>
           <Button
-            style={{ width: "60px", marginLeft: "10px", marginBottom: "5px" }}
+            style={{ width: "60px", marginLeft: "10px", marginBottom: "15px" }}
             variant="danger"
             size="sm"
           >
@@ -57,11 +59,11 @@ function ProductCardView({
         <Card.Img
           src={categoryIconUrl}
           style={{
-            width: "55px",
-            height: "55px",
+            width: "45px",
+            height: "45px",
             position: "absolute",
             top: "25%",
-            right: "10px",
+            right: "20px",
           }}
         />
       </Card>

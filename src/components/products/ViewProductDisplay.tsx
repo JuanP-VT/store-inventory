@@ -23,10 +23,9 @@ function ViewProductDisplay({
   const [paginatedProductList, setPaginatedProductList] = useState<Product[][]>(
     []
   );
-
   // Create pagination from product list
   useEffect(() => {
-    const paginatedArray = createPagination(productList, 18);
+    const paginatedArray = createPagination(productList, 40);
     setPaginatedProductList(paginatedArray);
   }, [productList]);
   return (
@@ -36,11 +35,13 @@ function ViewProductDisplay({
         <Container
           fluid
           style={{
-            height: "90vh",
+            height: "85vh",
             display: "grid",
-            gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))",
+            gridTemplateColumns: "repeat(auto-fit, minmax(230px, 1fr))",
             justifyItems: "center",
+            rowGap: "10px",
             padding: "10px",
+            overflowY: "scroll",
           }}
         >
           {/* For each item in a page render a ProductCard */}
