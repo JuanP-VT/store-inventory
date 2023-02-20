@@ -5,6 +5,7 @@ import { Container } from "react-bootstrap";
 import Alert from "react-bootstrap/Alert";
 import handleOnSubmitProduct from "./handleOnSubmitProduct";
 import useGetCategoriesList from "../../hooks/useGetCategoriesList";
+import FormControlText from "../forms/FormControlText";
 interface NewProduct {
   name: string;
   category: string;
@@ -23,6 +24,7 @@ function AddProduct() {
     minStock: null,
     maxStock: null,
   });
+  console.log(newProduct);
   const categoryList = useGetCategoriesList();
   // Form validation state and feedback for the user
   const [feedbackMessage, setFeedbackMessage] = useState("");
@@ -53,17 +55,14 @@ function AddProduct() {
             )
           }
         >
-          <Form.Group controlId="productName">
-            <Form.Label>Product Name</Form.Label>
-            <Form.Control
-              type="text"
-              required
-              onChange={(e) =>
-                setNewProduct({ ...newProduct, name: e.target.value })
-              }
-            />
-            <Form.Control.Feedback>Looks good</Form.Control.Feedback>
-          </Form.Group>
+          <FormControlText
+            name="name"
+            state={newProduct}
+            setNewProperty={setNewProduct}
+            label="Product Name"
+            id="productName"
+          />
+
           <Form.Group controlId="productCategory">
             <Form.Label>Category</Form.Label>
             <Form.Select
