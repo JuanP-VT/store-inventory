@@ -4,22 +4,30 @@ export default async function handleOnSubmitProduct(
   e: React.FormEvent,
   setMessage: React.Dispatch<React.SetStateAction<string>>,
   setValidated: React.Dispatch<React.SetStateAction<boolean>>,
-  newProduct: { name: string; category: string; stock: number; price: number }
+  newProduct: {
+    name: string;
+    category: string;
+    stock: number;
+    price: number;
+    minStock: number | null;
+    maxStock: number | null;
+  }
 ) {
   e.preventDefault();
+  setValidated(true);
   // Pre request validation
   if (newProduct.name === "") {
     setMessage("Enter Product Name");
     return;
   }
-  if (newProduct.stock === undefined) {
-    setMessage("Enter Current Stock");
-    return;
+
+  if (newProduct.minStock !== null && newProduct.maxStock !== null) {
+    if (newProduct.minStock > newProduct.maxStock) {
+      setMessage("Minimum limit must be lower than maximum");
+      return;
+    }
   }
-  if (newProduct.price === undefined) {
-    setMessage("Enter Price");
-    return;
-  }
+
   //Api call
   const res = await fetch("https://wild-waterfall-1243.fly.dev/products", {
     method: "POST",
@@ -31,13 +39,12 @@ export default async function handleOnSubmitProduct(
   const { msg } = await res.json();
   //Post request Validation
   const nameInput = document.querySelector("#productName") as HTMLInputElement;
-
   if (msg === "Name is already in database") {
     nameInput.setCustomValidity("Invalid field");
   }
   if (msg === "Success" && msg !== "Name is already in database") {
     nameInput.setCustomValidity("");
   }
-  setValidated(true);
+
   setMessage(msg);
 }
