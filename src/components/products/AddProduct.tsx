@@ -6,6 +6,7 @@ import Alert from "react-bootstrap/Alert";
 import handleOnSubmitProduct from "./handleOnSubmitProduct";
 import useGetCategoriesList from "../../hooks/useGetCategoriesList";
 import FormControlText from "../forms/FormControlText";
+import FormControlCategorySelector from "../forms/FormControlCategorySelector";
 interface NewProduct {
   name: string;
   category: string;
@@ -25,11 +26,10 @@ function AddProduct() {
     maxStock: null,
   });
   console.log(newProduct);
-  const categoryList = useGetCategoriesList();
   // Form validation state and feedback for the user
   const [feedbackMessage, setFeedbackMessage] = useState("");
   const [formIsValidated, setFormIsValidated] = useState(false);
-  // Behavior for the stock range section
+  // If stock range is disabled transform minStock and maxStock to null
   const stockRangeCheck = useRef<HTMLInputElement>(null);
   const [hasStockRange, setHasStockRange] = useState(false);
   useEffect(() => {
@@ -62,20 +62,10 @@ function AddProduct() {
             label="Product Name"
             id="productName"
           />
-
-          <Form.Group controlId="productCategory">
-            <Form.Label>Category</Form.Label>
-            <Form.Select
-              onChange={(e) =>
-                setNewProduct({ ...newProduct, category: e.target.value })
-              }
-            >
-              <option>No Category</option>
-              {categoryList.map((item, index) => (
-                <option key={`catList-${index}`}>{item.name}</option>
-              ))}
-            </Form.Select>
-          </Form.Group>
+          <FormControlCategorySelector
+            state={newProduct}
+            setNewProperty={setNewProduct}
+          />
           <Form.Group controlId="productStock">
             <Form.Label>Stock</Form.Label>
             <Form.Control
