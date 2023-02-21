@@ -1,44 +1,24 @@
 // Grabs the information from the form and send an edit request to the API
 export default async function handleProductEdit(
+  editedProduct: {
+    name: string;
+    category: string;
+    price: number;
+    stock: number;
+  },
   e: React.MouseEvent,
   setUpdateComponent: React.Dispatch<React.SetStateAction<number>>,
   setFeedback: React.Dispatch<React.SetStateAction<boolean>>,
   setEdit: React.Dispatch<React.SetStateAction<boolean>>
 ) {
   e.preventDefault();
-  const target = e.target as HTMLButtonElement;
-  const parentCard = target.parentElement?.parentElement as HTMLDivElement;
-  const productName = parentCard.querySelector(
-    "#productName"
-  ) as HTMLInputElement;
-  const productCategory = parentCard.querySelector(
-    "#productCategory"
-  ) as HTMLInputElement;
-  const productStock = parentCard.querySelector(
-    "#productStock"
-  ) as HTMLInputElement;
-  const productPrice = parentCard.querySelector(
-    "#productPrice"
-  ) as HTMLInputElement;
 
-  const id = parentCard.getAttribute("data-_id");
-  const name = productName.value;
-  const category = productCategory.value;
-  const Stock = productStock.value;
-  const price = productPrice.value;
-  const newEntry = {
-    _id: id,
-    name: name,
-    category: category,
-    stock: Stock,
-    price: price,
-  };
   const res = await fetch("https://wild-waterfall-1243.fly.dev/products", {
     method: "PUT",
     headers: {
       "Content-Type": "application/json;charset=utf-8",
     },
-    body: JSON.stringify(newEntry),
+    body: JSON.stringify(editedProduct),
   });
   const { msg } = await res.json();
   // If update is successful show feedback and disable edit mode

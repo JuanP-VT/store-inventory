@@ -3,37 +3,39 @@ import { Stack } from "react-bootstrap";
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 import Form from "react-bootstrap/Form";
-import { Category } from "../../../interfaces";
+import { Category, Product } from "../../../interfaces";
 import handleProductEdit from "./handleProductEdit";
 import { FaCheck } from "react-icons/fa";
 type Props = {
   setEditMode: React.Dispatch<React.SetStateAction<boolean>>;
-  name: string;
-  category?: string;
-  categoryIconUrl: string;
-  stock: number;
-  price: number;
+  product: Product;
   categoryList: Category[];
-  _id: string;
   setUpdateComponent: React.Dispatch<React.SetStateAction<number>>;
 };
 
 function ProductCardEdit({
+  product,
   setEditMode,
-  name,
-  category: category,
-  categoryIconUrl: categoryIconUrl,
-  stock,
-  price,
   categoryList: categoryList,
-  _id,
   setUpdateComponent,
 }: Props) {
   const [feedback, setFeedback] = useState(false);
+  const [_id] = useState(product._id);
+  const [name, setName] = useState(product.name);
+  const [category, setCategory] = useState(product.category);
+  const [stock, setStock] = useState(product.stock);
+  const [price, setPrice] = useState(product.price);
+  const editedProduct = {
+    _id: _id,
+    name: name,
+    category: category,
+    stock: stock,
+    price: price,
+  };
   return (
     <>
       <Card
-        data-_id={_id}
+        data-_id={product._id}
         style={{
           width: "15rem",
           height: "17rem",
@@ -50,7 +52,8 @@ function ProductCardEdit({
             type="text"
             required
             style={{ height: "25px", fontSize: "13px" }}
-            defaultValue={name}
+            value={name}
+            onChange={(e) => setName(e.currentTarget.value)}
           />
         </Form.Group>
         <Form.Group controlId="productCategory">
@@ -61,6 +64,7 @@ function ProductCardEdit({
             defaultValue={category}
             className=" m-0 w-75"
             style={{ height: "30px", fontSize: "11px" }}
+            onChange={(e) => setCategory(e.currentTarget.value)}
           >
             <option style={{ fontSize: "10px" }}>No Category</option>
             {categoryList.map((item, index) => (
@@ -78,6 +82,13 @@ function ProductCardEdit({
             required
             style={{ height: "25px", fontSize: "13px" }}
             defaultValue={stock}
+            onChange={(e) =>
+              setStock(
+                e.currentTarget.value == ""
+                  ? 0
+                  : parseInt(e.currentTarget.value)
+              )
+            }
           />
         </Form.Group>
         <Form.Group controlId="productPrice">
@@ -90,6 +101,13 @@ function ProductCardEdit({
             required
             style={{ height: "25px", fontSize: "13px" }}
             defaultValue={price}
+            onChange={(e) =>
+              setPrice(
+                e.currentTarget.value == ""
+                  ? 0
+                  : parseInt(e.currentTarget.value)
+              )
+            }
           />
         </Form.Group>
 
@@ -107,6 +125,7 @@ function ProductCardEdit({
               <Button
                 onClick={(e) =>
                   handleProductEdit(
+                    editedProduct,
                     e,
                     setUpdateComponent,
                     setFeedback,
@@ -142,7 +161,7 @@ function ProductCardEdit({
           X
         </Button>
         <Card.Img
-          src={categoryIconUrl}
+          src={product.categoryIconUrl}
           style={{
             width: "50px",
             height: "50px",
