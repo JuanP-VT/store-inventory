@@ -1,5 +1,3 @@
-import { Product } from "../../interfaces";
-
 export default async function handleOnSubmitProduct(
   e: React.FormEvent,
   setMessage: React.Dispatch<React.SetStateAction<string>>,
@@ -7,8 +5,8 @@ export default async function handleOnSubmitProduct(
   newProduct: {
     name: string;
     category: string;
-    stock: number;
-    price: number;
+    stock: number | null;
+    price: number | null;
     minStock: number | null;
     maxStock: number | null;
   }

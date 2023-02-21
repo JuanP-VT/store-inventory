@@ -1,20 +1,17 @@
-import { useState, useEffect } from "react";
+import React from "react";
 import Form from "react-bootstrap/esm/Form";
 import useGetCategoriesList from "../../hooks/useGetCategoriesList";
 
 type Props = {
-  state: any;
-  setNewProperty: React.Dispatch<React.SetStateAction<any>>;
+  setState: React.Dispatch<React.SetStateAction<string>>;
 };
 
-function FormControlCategorySelector({ state, setNewProperty }: Props) {
+function FormControlCategorySelector({ setState }: Props) {
   const categoryList = useGetCategoriesList();
   return (
     <Form.Group controlId="productCategory">
       <Form.Label>Category</Form.Label>
-      <Form.Select
-        onChange={(e) => setNewProperty({ ...state, category: e.target.value })}
-      >
+      <Form.Select onChange={(e) => setState(e.currentTarget.value)}>
         <option>No Category</option>
         {categoryList.map((item, index) => (
           <option key={`catList-${index}`}>{item.name}</option>
