@@ -8,12 +8,9 @@ export interface ApiProduct {
   stock: number;
   price: number;
   _id: string;
+  minStock: number | null;
+  maxStock: number | null;
 }
-export interface Product {
-  name: string;
-  category: string;
+export interface Product extends ApiProduct {
   categoryIconUrl: string | undefined;
-  stock: number;
-  price: number;
-  _id: string;
 }

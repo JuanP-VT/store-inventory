@@ -50,18 +50,9 @@ function ViewProductDisplay({
             ? paginatedProductList[currentPageIndex].map((product, index) => (
                 <ProductCard
                   key={`itm${index}`}
-                  name={product.name}
-                  category={product.category}
-                  categoryIconUrl={
-                    product.categoryIconUrl === undefined
-                      ? ""
-                      : product.categoryIconUrl
-                  }
-                  stock={product.stock}
-                  price={product.price}
-                  categoryList={categoryList}
-                  _id={product._id}
+                  product={product}
                   setUpdateComponent={setUpdateComponent}
+                  categoryList={categoryList}
                 />
               ))
             : ""}

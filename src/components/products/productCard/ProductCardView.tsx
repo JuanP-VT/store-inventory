@@ -2,23 +2,13 @@ import React from "react";
 import { Stack } from "react-bootstrap";
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
+import { Product } from "../../../interfaces";
 type Props = {
   setEditMode: React.Dispatch<React.SetStateAction<boolean>>;
-  name: string;
-  category?: string;
-  categoryIconUrl: string;
-  stock: number;
-  price: number;
+  product: Product;
 };
 
-function ProductCardView({
-  setEditMode,
-  name,
-  category: category,
-  categoryIconUrl: categoryIconUrl,
-  price,
-  stock,
-}: Props) {
+function ProductCardView({ setEditMode, product }: Props) {
   return (
     <>
       <Card
@@ -28,13 +18,13 @@ function ProductCardView({
       >
         <Card.Body className="pb-0 mb-0">
           <Card.Title style={{ textTransform: "capitalize" }}>
-            {name}
+            {product.name}
           </Card.Title>
           <Card.Subtitle style={{ textTransform: "capitalize" }}>
-            {category}
+            {product.category}
           </Card.Subtitle>
-          <Card.Text className="mb-0">Stock : {stock}</Card.Text>
-          <Card.Text className="mb-0">Price : {price}$ </Card.Text>
+          <Card.Text className="mb-0">Stock : {product.stock}</Card.Text>
+          <Card.Text className="mb-0">Price : {product.price}$ </Card.Text>
         </Card.Body>
         <Stack direction="horizontal">
           <Button
@@ -57,7 +47,7 @@ function ProductCardView({
           </Button>
         </Stack>
         <Card.Img
-          src={categoryIconUrl}
+          src={product.categoryIconUrl}
           style={{
             width: "45px",
             height: "45px",
