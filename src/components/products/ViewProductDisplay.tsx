@@ -31,7 +31,13 @@ function ViewProductDisplay({
   return (
     <>
       <Stack>
-        <FilterProduct categoryList={categoryList} productList={productList} />
+        <Stack direction="horizontal" gap={5}>
+          <FilterProduct
+            categoryList={categoryList}
+            productList={productList}
+          />
+          <h1 className="text-end">Catalog of products</h1>
+        </Stack>
         <Container
           fluid
           style={{
@@ -52,7 +58,6 @@ function ViewProductDisplay({
                   key={`itm${index}`}
                   product={product}
                   setUpdateComponent={setUpdateComponent}
-                  categoryList={categoryList}
                 />
               ))
             : ""}

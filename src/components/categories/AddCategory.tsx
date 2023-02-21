@@ -24,6 +24,7 @@ function AddCategory() {
           paddingRight: "400px",
         }}
       >
+        <h1>Add New Category</h1>
         <Form
           noValidate
           validated={formIsValidated}
