@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Category, Product } from "../../interfaces";
 import getAllProductsRequest from "./getAllProductsRequest";
+import FilterProduct from "./productFilter/FilterProduct";
 import ViewProductDisplay from "./ViewProductDisplay";
 
 // This component is in charge of requesting information to the API and sorting data
@@ -17,9 +18,9 @@ function ViewProduct() {
 
   return (
     <>
+      <FilterProduct productList={productList} />
       <ViewProductDisplay
         productList={productList}
-        categoryList={categoryList}
         setUpdateComponent={setUpdateComponent}
       />
     </>

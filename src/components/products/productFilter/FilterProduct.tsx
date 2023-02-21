@@ -1,30 +1,26 @@
-import React, { useRef } from "react";
+import React, { useState } from "react";
 
 import Dropdown from "react-bootstrap/Dropdown";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
-import { Category, Product } from "../../../interfaces";
-import { DropdownSelector } from "./DropDownSelector";
+import { Product } from "../../../interfaces";
+import FormControlCategorySelector from "../../forms/FormControlCategorySelector";
 type Props = {
   productList: Product[];
-  categoryList: Category[];
 };
 
-function FilterProduct({ productList, categoryList: categoryList }: Props) {
-  const categoryInput = useRef(null);
-  const categoryListOptions = categoryList.map((category, index) => (
-    <option key={`f${index}`}>{category.name}</option>
-  ));
+function FilterProduct({ productList }: Props) {
+  const [selectedCategory, setSelectedCategory] = useState("All");
   return (
     <>
       <Dropdown className="p-2 d-inline mx-2" autoClose="outside">
         <Dropdown.Toggle id="dropdown-autoclose-outside">
           Filter Product
         </Dropdown.Toggle>
-        <Dropdown.Menu>
+        <Dropdown.Menu className="p-2">
           <Form>
             <Form.Group>
-              <DropdownSelector categoryList={categoryList} />
+              <FormControlCategorySelector setState={setSelectedCategory} />
             </Form.Group>
             <Form.Group>
               <Form.Label>Product Name</Form.Label>

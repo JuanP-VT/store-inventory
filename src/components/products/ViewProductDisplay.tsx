@@ -9,14 +9,13 @@ import FilterProduct from "./productFilter/FilterProduct";
 
 type Props = {
   productList: Product[];
-  categoryList: Category[];
   setUpdateComponent: React.Dispatch<React.SetStateAction<number>>;
 };
 
 // This component displays filtered products
 function ViewProductDisplay({
   productList,
-  categoryList: categoryList,
+
   setUpdateComponent,
 }: Props) {
   const [currentPageIndex, setCurrentPageIndex] = useState(0);
@@ -32,11 +31,12 @@ function ViewProductDisplay({
     <>
       <Stack>
         <Stack direction="horizontal" gap={5}>
-          <FilterProduct
-            categoryList={categoryList}
-            productList={productList}
-          />
-          <h1 className="text-end">Catalog of products</h1>
+          <h3
+            style={{ position: "absolute", right: "50%", marginTop: "-30px" }}
+            className="text-end"
+          >
+            Catalog of products
+          </h3>
         </Stack>
         <Container
           fluid
