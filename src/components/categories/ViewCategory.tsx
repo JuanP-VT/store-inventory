@@ -2,9 +2,9 @@ import React from "react";
 import { useEffect, useState } from "react";
 import { Category } from "../../interfaces";
 import CategoryCard from "./categoryCard/CategoryCard";
-type Props = {};
+
 // This component will call the API to fetch and display all categories and display
-function ViewCategory({}: Props) {
+function ViewCategory() {
   //Fetch category list and save in state
   const [categoryList, setCategoryList] = useState<Category[]>([]);
   useEffect(() => {

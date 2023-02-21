@@ -1,6 +1,6 @@
 import React from "react";
 import { useState } from "react";
-import { Categorie } from "../../../interfaces";
+import { Category } from "../../../interfaces";
 import ProductCardEdit from "./ProductCardEdit";
 import ProductCardView from "./ProductCardView";
 type Props = {
@@ -9,18 +9,18 @@ type Props = {
   categoryIconUrl: string;
   stock: number;
   price: number;
-  categoryList: Categorie[];
+  categoryList: Category[];
   _id: string;
   setUpdateComponent: React.Dispatch<React.SetStateAction<number>>;
 };
 
 function ProductCard({
   name,
-  category: categorie,
-  categoryIconUrl: categorieIconUrl,
+  category,
+  categoryIconUrl,
   price,
   stock,
-  categoryList: categorieList,
+  categoryList,
   _id,
   setUpdateComponent,
 }: Props) {
@@ -31,8 +31,8 @@ function ProductCard({
         <ProductCardView
           setEditMode={setEditMode}
           name={name}
-          category={categorie}
-          categoryIconUrl={categorieIconUrl}
+          category={category}
+          categoryIconUrl={categoryIconUrl}
           stock={stock}
           price={price}
         />
@@ -40,11 +40,11 @@ function ProductCard({
         <ProductCardEdit
           setEditMode={setEditMode}
           name={name}
-          category={categorie}
-          categoryIconUrl={categorieIconUrl}
+          category={category}
+          categoryIconUrl={categoryIconUrl}
           stock={stock}
           price={price}
-          categoryList={categorieList}
+          categoryList={categoryList}
           _id={_id}
           setUpdateComponent={setUpdateComponent}
         />

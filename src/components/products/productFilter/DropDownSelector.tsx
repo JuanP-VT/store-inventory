@@ -6,11 +6,13 @@ import { Category } from "../../../interfaces";
 //Bootstrap component
 type CustomToggleProps = {
   children?: React.ReactNode;
+  // eslint-disable-next-line @typescript-eslint/ban-types
   onClick?: (event: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {};
 };
 
 // The forwardRef is important!!
 // Dropdown needs access to the DOM node in order to position the Menu
+// eslint-disable-next-line react/display-name
 const CustomToggle = React.forwardRef(
   (props: CustomToggleProps, ref: React.Ref<HTMLAnchorElement>) => (
     <a
@@ -36,6 +38,7 @@ type CustomMenuProps = {
 
 // forwardRef again here!
 // Dropdown needs access to the DOM of the Menu to measure it
+// eslint-disable-next-line react/display-name
 const CustomMenu = React.forwardRef(
   (props: CustomMenuProps, ref: React.Ref<HTMLDivElement>) => {
     const [value, setValue] = useState("");

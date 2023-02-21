@@ -1,6 +1,4 @@
-import Container from "react-bootstrap/Container";
-import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col";
+import React from "react";
 import NavBar from "./components/NavBar/NavBar";
 import { Routes, Route } from "react-router-dom";
 import AddCategory from "./components/categories/AddCategory";
@@ -12,8 +10,8 @@ function App() {
     <>
       <NavBar />
       <Routes>
-        <Route path="/addcategorie" element={<AddCategory />} />
-        <Route path="/viewcategorie" element={<ViewCategory />} />
+        <Route path="/addcategory" element={<AddCategory />} />
+        <Route path="/viewcategories" element={<ViewCategory />} />
         <Route path="/addproduct" element={<AddProduct />} />
         <Route path="/viewproduct" element={<ViewProduct />} />
       </Routes>

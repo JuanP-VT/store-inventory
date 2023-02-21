@@ -1,9 +1,9 @@
+import React, { useRef } from "react";
+
 import Dropdown from "react-bootstrap/Dropdown";
-import DropdownButton from "react-bootstrap/DropdownButton";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import { Category, Product } from "../../../interfaces";
-import { useRef } from "react";
 import { DropdownSelector } from "./DropDownSelector";
 type Props = {
   productList: Product[];

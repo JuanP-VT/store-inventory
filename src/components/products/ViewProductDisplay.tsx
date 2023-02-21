@@ -1,9 +1,9 @@
+import React, { useEffect, useState } from "react";
 import { Category, Product } from "../../interfaces";
 import ProductCard from "./productCard/ProductCard";
 import Container from "react-bootstrap/Container";
 import { Stack } from "react-bootstrap";
 import PaginationButtons from "./PaginationButtons";
-import { useEffect, useState } from "react";
 import createPagination from "./createPagination";
 import FilterProduct from "./productFilter/FilterProduct";
 
@@ -52,7 +52,11 @@ function ViewProductDisplay({
                   key={`itm${index}`}
                   name={product.name}
                   category={product.category}
-                  categoryIconUrl={product.categoryIconUrl!}
+                  categoryIconUrl={
+                    product.categoryIconUrl === undefined
+                      ? ""
+                      : product.categoryIconUrl
+                  }
                   stock={product.stock}
                   price={product.price}
                   categoryList={categoryList}

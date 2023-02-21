@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import BPagination from "react-bootstrap/Pagination";
 import { Product } from "../../interfaces";
 type Props = {

@@ -1,6 +1,5 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Category, Product } from "../../interfaces";
-import FilterProduct from "./productFilter/FilterProduct";
 import getAllProductsRequest from "./getAllProductsRequest";
 import ViewProductDisplay from "./ViewProductDisplay";
 

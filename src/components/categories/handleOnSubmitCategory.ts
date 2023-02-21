@@ -1,4 +1,4 @@
-/*This function makes a request to post a new categorie to the database,
+/*This function makes a request to post a new category to the database,
 it validates the request and returns feedback to the user
 */
 
@@ -13,7 +13,7 @@ async function handleOnSubmitCategory(
   e.preventDefault();
   const nameInput = document.querySelector("#categoryName") as HTMLInputElement;
 
-  // Prerequest validation
+  // Pre request validation
   if (newCategory.name === "") {
     setFeedbackMessage("Enter Category Name");
     return;
