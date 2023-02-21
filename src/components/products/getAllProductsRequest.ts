@@ -19,6 +19,8 @@ export default async function getAllProductsRequest(
       stock: product.stock,
       price: product.price,
       _id: product._id,
+      minStock: product.minStock,
+      maxStock: product.maxStock,
     };
   });
   setProductList(modProductList);
