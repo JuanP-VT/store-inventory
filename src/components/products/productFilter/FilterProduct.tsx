@@ -1,6 +1,5 @@
 import React from "react";
 import Dropdown from "react-bootstrap/Dropdown";
-import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import FormControlCategorySelector from "../../forms/FormControlCategorySelector";
 type Props = {
@@ -18,7 +17,10 @@ function FilterProduct({ setSelectedCategory, setSelectedName }: Props) {
         <Dropdown.Menu className="p-2">
           <Form>
             <Form.Group>
-              <FormControlCategorySelector setState={setSelectedCategory} />
+              <FormControlCategorySelector
+                setState={setSelectedCategory}
+                defaultValue="All"
+              />
             </Form.Group>
             <Form.Group>
               <Form.Label>Product Name</Form.Label>
@@ -27,9 +29,6 @@ function FilterProduct({ setSelectedCategory, setSelectedName }: Props) {
                 type="text"
               ></Form.Control>
             </Form.Group>
-            <Button size="sm" className="m-2">
-              Reset Filters
-            </Button>
           </Form>
         </Dropdown.Menu>
       </Dropdown>

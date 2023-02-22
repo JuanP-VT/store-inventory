@@ -84,7 +84,12 @@ function CardEditForm({
           >
             <option style={{ fontSize: "10px" }}>No Category</option>
             {categoryList.map((item, index) => (
-              <option key={`ct${index}`}>{item.name}</option>
+              <option
+                style={{ textTransform: "capitalize" }}
+                key={`ct${index}`}
+              >
+                {item.name}
+              </option>
             ))}
           </Form.Select>
         </Form.Group>

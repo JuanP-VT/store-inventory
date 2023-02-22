@@ -16,10 +16,10 @@ function ViewProduct() {
     getAllProductsRequest(setProductList, setCategoryList);
   }, [updateComponent]);
   // Filtering
-  const [selectedCategory, setSelectedCategory] = useState("No Category");
+  const [selectedCategory, setSelectedCategory] = useState("All");
   const [selectedName, setSelectedName] = useState("");
   const filteredByCategory =
-    selectedCategory === "No Category"
+    selectedCategory === "All"
       ? productList
       : productList.filter((prod) => prod.category === selectedCategory);
   const filteredByName = filteredByCategory.filter((prod) =>
