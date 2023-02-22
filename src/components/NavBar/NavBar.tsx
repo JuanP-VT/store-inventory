@@ -15,12 +15,7 @@ function NavBar() {
         </Nav.Link>
       </Nav.Item>
       <Nav.Item>
-        <Nav.Link as={Link} to="/viewcategory">
-          Categories
-        </Nav.Link>
-      </Nav.Item>
-      <Nav.Item>
-        <Nav.Link as={Link} to="/viewproduct">
+        <Nav.Link as={Link} to="/">
           View Product
         </Nav.Link>
       </Nav.Item>
