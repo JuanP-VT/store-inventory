@@ -15,12 +15,24 @@ function ViewProduct() {
   useEffect(() => {
     getAllProductsRequest(setProductList, setCategoryList);
   }, [updateComponent]);
-
+  // Filtering
+  const [selectedCategory, setSelectedCategory] = useState("No Category");
+  const [selectedName, setSelectedName] = useState("");
+  const filteredByCategory =
+    selectedCategory === "No Category"
+      ? productList
+      : productList.filter((prod) => prod.category === selectedCategory);
+  const filteredByName = filteredByCategory.filter((prod) =>
+    prod.name.startsWith(selectedName)
+  );
   return (
     <>
-      <FilterProduct productList={productList} />
+      <FilterProduct
+        setSelectedCategory={setSelectedCategory}
+        setSelectedName={setSelectedName}
+      />
       <ViewProductDisplay
-        productList={productList}
+        productList={filteredByName}
         setUpdateComponent={setUpdateComponent}
       />
     </>

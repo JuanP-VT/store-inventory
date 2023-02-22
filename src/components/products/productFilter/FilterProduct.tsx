@@ -1,16 +1,14 @@
-import React, { useState } from "react";
-
+import React from "react";
 import Dropdown from "react-bootstrap/Dropdown";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
-import { Product } from "../../../interfaces";
 import FormControlCategorySelector from "../../forms/FormControlCategorySelector";
 type Props = {
-  productList: Product[];
+  setSelectedName: React.Dispatch<React.SetStateAction<string>>;
+  setSelectedCategory: React.Dispatch<React.SetStateAction<string>>;
 };
 
-function FilterProduct({ productList }: Props) {
-  const [selectedCategory, setSelectedCategory] = useState("All");
+function FilterProduct({ setSelectedCategory, setSelectedName }: Props) {
   return (
     <>
       <Dropdown className="p-2 d-inline mx-2" autoClose="outside">
@@ -24,7 +22,10 @@ function FilterProduct({ productList }: Props) {
             </Form.Group>
             <Form.Group>
               <Form.Label>Product Name</Form.Label>
-              <Form.Control type="text"></Form.Control>
+              <Form.Control
+                onChange={(e) => setSelectedName(e.currentTarget.value)}
+                type="text"
+              ></Form.Control>
             </Form.Group>
             <Button size="sm" className="m-2">
               Reset Filters
